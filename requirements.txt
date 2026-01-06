@@ -2,3 +2,5 @@ fastapi
 uvicorn
 sentence-transformers
 numpy
+python-multipart
+python-dotenv

@@ -1,8 +1,13 @@
 from app.db import get_connection
 
-conn = get_connection()
-cursor = conn.cursor()
+try:
+    conn = get_connection()
+    cursor = conn.cursor()
 
-cursor.execute("SELECT name FROM sqlite_master WHERE type='table';")
-print(cursor.fetchall())
-conn.close()
+    cursor.execute("SELECT name FROM sqlite_master WHERE type='table';")
+    tables = cursor.fetchall()
+    print(f"Tables in database: {tables}")
+    
+    conn.close()
+except Exception as e:
+    print(f"Error connecting to database: {e}")
