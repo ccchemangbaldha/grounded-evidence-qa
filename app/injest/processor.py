@@ -4,10 +4,7 @@ from sentence_transformers import SentenceTransformer
 from app.embeddings.similarity import cosine_similarity
 from app.db.operations import save_document_with_chunks
 
-_model = SentenceTransformer(
-    "sentence-transformers/all-MiniLM-L6-v2"
-)
-
+_model = SentenceTransformer("sentence-transformers/all-MiniLM-L6-v2")
 def _split_sentences(text: str):
     return re.split(r'(?<=[.!?])\s+', text.strip())
 
@@ -28,6 +25,7 @@ def _semantic_chunk(sentences, threshold=0.70):
             current.append(sentences[i])
             centroid = np.mean([centroid, embeddings[i]], axis=0)
 
+
     chunks.append(" ".join(current))
     return chunks
 
@@ -37,7 +35,6 @@ def process_content_string(filename: str, content: str):
         raise ValueError("Empty document")
 
     chunks = _semantic_chunk(sentences)
-
     records = []
     for idx, text in enumerate(chunks):
         embedding = _model.encode(text).tolist()
@@ -46,7 +43,6 @@ def process_content_string(filename: str, content: str):
             "chunk_text": text,
             "embedding": embedding
         })
-
     document_id = save_document_with_chunks(filename, records)
 
     return {

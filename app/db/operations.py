@@ -8,7 +8,7 @@ def save_document_with_chunks(filename: str, chunk_records: list):
 
     try:
         cursor.execute(
-            "INSERT INTO documents (name) VALUES (?)",
+            "INSERT INTO documents (name) values (?)",
             (filename,)
         )
         document_id = cursor.lastrowid
@@ -17,8 +17,7 @@ def save_document_with_chunks(filename: str, chunk_records: list):
             cursor.execute(
                 """
                 INSERT INTO chunks (document_id, chunk_index, text, embedding)
-                VALUES (?, ?, ?, ?)
-                """,
+                VALUES (?, ?, ?, ?)""",
                 (
                     document_id,
                     record["chunk_id"],
@@ -28,7 +27,6 @@ def save_document_with_chunks(filename: str, chunk_records: list):
                     )
                 )
             )
-
         conn.commit()
         return document_id
 

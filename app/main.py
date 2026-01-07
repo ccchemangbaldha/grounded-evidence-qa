@@ -1,9 +1,22 @@
 from fastapi import FastAPI
 from app.api.routes import router
+from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI()
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=[
+        "http://127.0.0.1:5500",
+        "http://localhost:5500",
+    ],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
 app.include_router(router)
 
-@app.get("/health")
-def health():
-    return {"success": True, "message": "Service is healthy"}
+@router.get("/")
+async def hello():
+    return {"success":True, "message":"Hello Wolrd!"}

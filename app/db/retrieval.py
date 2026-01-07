@@ -48,10 +48,9 @@ def get_relevant_chunks(
         if sim >= min_similarity:
             scored.append({
                 "chunk_id": rowid,
-                "chunk_index": idx,
                 "text": text,
                 "similarity": sim,
-                "document_name": document_name
+                "document": document_name
             })
 
     scored.sort(key=lambda x: x["similarity"], reverse=True)
