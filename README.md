@@ -1,3 +1,12 @@
+---
+license: mit
+title: rag-app
+sdk: docker
+emoji: 🚀
+colorFrom: green
+colorTo: green
+pinned: false
+---
 # **Grounded Evidence QA**
 
 **Grounded Evidence QA** is a simple question-answering system that answers questions **only from uploaded documents**, always showing **evidence and confidence**.
