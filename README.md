@@ -88,11 +88,8 @@ source venv/Scripts/activate
 # Install required packages
 pip install -r requirements.txt
 
-# Start the python server
+# Start the python app
 uvicorn app.main:app --reload
-
-# Start UI (optional)
-py -m http.server 5500 --bind 127.0.0.1
 ```
 
 ---
