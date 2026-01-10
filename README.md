@@ -167,4 +167,4 @@ This project is intentionally simple and has known limitations:
 This is not a chatbot.
 This is a **grounded evidence-based question answering system**.
 
-If the document does not support the answer, the system will **honestly say so** - and that is the point.
+If the document does not support the answer, the system will **honestly say so** - and that is the point. :-)
